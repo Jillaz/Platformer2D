@@ -7,7 +7,7 @@ public class PositionRestarter : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out DeathZone _))
-        {
+        {            
             transform.position = _startPosition.position;
         }
     }

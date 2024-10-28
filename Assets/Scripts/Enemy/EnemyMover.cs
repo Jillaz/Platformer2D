@@ -5,12 +5,11 @@ public class EnemyMover : MonoBehaviour
 {
     public static int IsMoving = Animator.StringToHash(nameof(IsMoving));
 
-    [SerializeField] private float _speed;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Animator _animator;
+    [SerializeField] private float _speed;    
     [SerializeField] private float _waitingTime = 1f;
     private Vector2 _direction = Vector2.right;
-    private int _changeDirection = -1;
+    private int _directionReverce = -1;
     private bool _isCanMove = true;
 
     private void Awake()
@@ -42,8 +41,8 @@ public class EnemyMover : MonoBehaviour
 
         yield return delay;
 
-        _direction *= _changeDirection;
-        _spriteRenderer.flipX = !_spriteRenderer.flipX;
+        _direction *= _directionReverce;        
+        transform.localScale = new Vector2(transform.localScale.x * _directionReverce, transform.localScale.y);        
         _isCanMove = true;
         _animator.SetBool(IsMoving, _isCanMove);
     }

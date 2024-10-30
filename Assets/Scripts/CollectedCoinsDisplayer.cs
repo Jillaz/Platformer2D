@@ -9,8 +9,13 @@ public class CollectedCoinsDisplayer : MonoBehaviour
 
     private void Start()
     {
-        _defaultString = _text.text;        
+        _defaultString = _text.text;
         _coinCounter.CoinsNumberChanged += DisplayResult;
+    }
+
+    private void OnDisable()
+    {
+        _coinCounter.CoinsNumberChanged -= DisplayResult;
     }
 
     private void DisplayResult(int coins)

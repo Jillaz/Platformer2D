@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public class CoinCollector : MonoBehaviour
 {
-    public UnityAction CoinCollected;
+    public event UnityAction<int> CoinCollected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Coin _))
+        if (collision.TryGetComponent(out Coin coin))
         {
-            CoinCollected?.Invoke();
+            CoinCollected?.Invoke(coin.CoinCost);
             Destroy(collision.gameObject);
         }
     }

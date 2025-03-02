@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinsSpawner : MonoBehaviour
+public class ItemsSpawner : MonoBehaviour
 {
-    [SerializeField] private Coin _coin;
+    [SerializeField] private GameObject _ItemPrefab;
     [SerializeField] private List<Transform> _spawnpoints = new List<Transform>();
 
     private void Start()
@@ -15,7 +15,7 @@ public class CoinsSpawner : MonoBehaviour
     {
         foreach (var item in _spawnpoints)
         {
-            Instantiate(_coin, item.position, Quaternion.identity);
+            Instantiate(_ItemPrefab, item.position, Quaternion.identity);
         }
     }
 }

@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb250dc189d266d488b6a965b70ad9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 5928472038357013202, guid: 11f339a86e25cc944aa0e749c24bedfe, type: 3}
+  _itemPrefab: {fileID: 4526161385660090036, guid: 11f339a86e25cc944aa0e749c24bedfe, type: 3}
   _spawnpoints:
   - {fileID: 1407229079}
   - {fileID: 2138080970}
@@ -14249,7 +14249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb250dc189d266d488b6a965b70ad9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 5468684929691792004, guid: f36ebee9250293f43a6a8f32cb2f3943, type: 3}
+  _itemPrefab: {fileID: -4238949781498225857, guid: f36ebee9250293f43a6a8f32cb2f3943, type: 3}
   _spawnpoints:
   - {fileID: 1087837887}
   - {fileID: 415580455}

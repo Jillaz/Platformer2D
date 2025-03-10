@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class ItemsSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _itemPrefab;
+    [SerializeField] private Items _itemPrefab;
     [SerializeField] private List<Transform> _spawnpoints = new List<Transform>();
 
     private void Start()
     {
-        SpawnCoins();
+        SpawnItems();
     }
 
-    private void SpawnCoins()
+    private void SpawnItems()
     {
         foreach (var item in _spawnpoints)
         {

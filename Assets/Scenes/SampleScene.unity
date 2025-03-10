@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb250dc189d266d488b6a965b70ad9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ItemPrefab: {fileID: 5928472038357013202, guid: 11f339a86e25cc944aa0e749c24bedfe, type: 3}
+  _itemPrefab: {fileID: 5928472038357013202, guid: 11f339a86e25cc944aa0e749c24bedfe, type: 3}
   _spawnpoints:
   - {fileID: 1407229079}
   - {fileID: 2138080970}
@@ -13554,7 +13554,7 @@ GameObject:
   - component: {fileID: 924740024}
   - component: {fileID: 924740025}
   - component: {fileID: 924740026}
-  - component: {fileID: 924740027}
+  - component: {fileID: 924740032}
   - component: {fileID: 924740028}
   - component: {fileID: 924740030}
   m_Layer: 7
@@ -13597,6 +13597,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 924740022}
   _groundChecker: {fileID: 1368672356}
   _playerInput: {fileID: 924740026}
+  _modelFlipper: {fileID: 924740032}
   _moveSpeed: 5
   _jumpForce: 8
 --- !u!50 &924740022
@@ -13700,20 +13701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d43e989a1aba0246a36619034ee9314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &924740027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924740017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc3a714142aa8c4398f1be1187005e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerInput: {fileID: 924740026}
-  _viewModel: {fileID: 924740020}
 --- !u!114 &924740028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13781,6 +13768,19 @@ MonoBehaviour:
   <Health>k__BackingField: 1000
   <DeadlyHealthLevel>k__BackingField: 0
   <AttackPower>k__BackingField: 20
+--- !u!114 &924740032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924740017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01feb230b1eaba74fb42bc729aaf5b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewModel: {fileID: 924740020}
 --- !u!1001 &926251969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14249,7 +14249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb250dc189d266d488b6a965b70ad9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ItemPrefab: {fileID: 5468684929691792004, guid: f36ebee9250293f43a6a8f32cb2f3943, type: 3}
+  _itemPrefab: {fileID: 5468684929691792004, guid: f36ebee9250293f43a6a8f32cb2f3943, type: 3}
   _spawnpoints:
   - {fileID: 1087837887}
   - {fileID: 415580455}

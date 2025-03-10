@@ -3,37 +3,38 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] private EnemyModelRenderer _enemyRenderer;
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private EnemyPlayerDetector _playerDetector;
     [SerializeField] private EnemyAttackRangeDetector _attackRangeDetector;
+    [SerializeField] private ModelFlipper _modelFlipper;
     [SerializeField] private float _speed;
     [SerializeField] private float _waitingTime = 1f;
     [SerializeField] private float _attackDelay = 2f;
+
     private Vector2 _direction = Vector2.right;
     private Transform _destination;
     private bool _isCanMove = true;
     private bool _isInAttackRange = false;
     private bool _isPlayerInTartget = false;
 
-    private void Start()
-    {
-        _enemyAnimator.SetMovingAnimation(_isCanMove);        
-    }
-
     private void OnEnable()
     {
         _playerDetector.PlayerDetected += FollowPlayer;
-        _attackRangeDetector.PlayerEnterAttackRange += StartAttack;
-        _attackRangeDetector.PlayerLeaveAttackRange += StopAttack;
+        _attackRangeDetector.PlayerEnteredAttackRange += StartAttack;
+        _attackRangeDetector.PlayerLeftAttackRange += StopAttack;
     }
 
     private void OnDisable()
     {
         _playerDetector.PlayerDetected -= FollowPlayer;
-        _attackRangeDetector.PlayerEnterAttackRange -= StartAttack;
-        _attackRangeDetector.PlayerLeaveAttackRange -= StopAttack;
+        _attackRangeDetector.PlayerEnteredAttackRange -= StartAttack;
+        _attackRangeDetector.PlayerLeftAttackRange -= StopAttack;
+    }
+
+    private void Start()
+    {
+        _enemyAnimator.SetMovingAnimation(_isCanMove);
     }
 
     private void FixedUpdate()
@@ -62,7 +63,6 @@ public class EnemyMover : MonoBehaviour
 
         yield return delay;
 
-        ChangeDirection();
         _isCanMove = true;
         _enemyAnimator.SetMovingAnimation(_isCanMove);
     }
@@ -84,7 +84,7 @@ public class EnemyMover : MonoBehaviour
             _direction = Vector2.right;
         }
 
-        _enemyRenderer.TurnOtherWay(_destination); 
+        _modelFlipper.FlipRotation(_direction.x);
     }
 
     private void FollowPlayer()
@@ -122,7 +122,7 @@ public class EnemyMover : MonoBehaviour
         while (_isInAttackRange)
         {
             yield return delay;
-            _enemyAnimator.Attack();            
+            _enemyAnimator.Attack();
         }
     }
 }

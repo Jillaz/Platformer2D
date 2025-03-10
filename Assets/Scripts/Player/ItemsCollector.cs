@@ -1,12 +1,12 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class ItemsCollector : MonoBehaviour
 {
     [SerializeField] private CombatStats _combatStats;
 
-    public event UnityAction<int> CoinCollected;
-    public event UnityAction<int> FirstAidKitCollected;
+    public event Action<int> CoinCollected;
+    public event Action<int> FirstAidKitCollected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

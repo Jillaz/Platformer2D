@@ -1,15 +1,15 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class EnemyPlayerDetector : MonoBehaviour
 {
     public Transform PlayerTransform { get; private set; } = null;
 
-    public event UnityAction PlayerDetected;
+    public event Action PlayerDetected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerMover player))
+        if (collision.TryGetComponent(out CombatStats player))
         {
             PlayerTransform = player.transform;
             PlayerDetected?.Invoke();

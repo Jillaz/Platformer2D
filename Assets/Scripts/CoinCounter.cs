@@ -1,12 +1,13 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class CoinCounter : MonoBehaviour
 {
     [SerializeField] private ItemsCollector _collector;
+
     private int _coinCount = 0;
 
-    public event UnityAction<int> CoinsNumberChanged;
+    public event Action<int> CoinsNumberChanged;
 
     private void OnEnable()
     {

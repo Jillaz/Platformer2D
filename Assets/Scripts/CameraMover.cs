@@ -4,6 +4,7 @@ public class CameraMover : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTarget;
     [SerializeField] private float _speed = 5f;
+
     private float _defaultCameraPositionOnZ;
 
     private void Start()

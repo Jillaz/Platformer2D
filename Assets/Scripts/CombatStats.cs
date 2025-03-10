@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class CombatStats : MonoBehaviour
 {
@@ -7,9 +7,9 @@ public class CombatStats : MonoBehaviour
     [field: SerializeField] public int DeadlyHealthLevel { get; private set; } = 0;
     [field: SerializeField] public int AttackPower { get; private set; } = 20;    
     
-    public event UnityAction SuddenDeath;
-    public event UnityAction HitRecived;
-    public event UnityAction<int> HealthUpdated;
+    public event Action CharacterDied;
+    public event Action HitRecived;
+    public event Action<int> HealthUpdated;
 
     public void ApplyDamage(int damage)
     {
@@ -19,7 +19,7 @@ public class CombatStats : MonoBehaviour
 
         if (Health <= DeadlyHealthLevel)
         {
-            SuddenDeath?.Invoke();
+            CharacterDied?.Invoke();
         }
     }
 

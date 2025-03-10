@@ -4,23 +4,24 @@ public class EnemyAttackEvent : MonoBehaviour
 {
     [SerializeField] private CombatStats _character;
     [SerializeField] private EnemyAttackRangeDetector _attackRangeDetector;
-    private CombatStats _target;
 
-    private void Start()
-    {
-        _target = null;
-    }
+    private CombatStats _target;
 
     private void OnEnable()
     {
-        _attackRangeDetector.PlayerEnterAttackRange += SetTarget;
-        _attackRangeDetector.PlayerLeaveAttackRange += ClearTarget;
+        _attackRangeDetector.PlayerEnteredAttackRange += SetTarget;
+        _attackRangeDetector.PlayerLeftAttackRange += ClearTarget;
     }
 
     private void OnDisable()
     {
-        _attackRangeDetector.PlayerEnterAttackRange -= SetTarget;
-        _attackRangeDetector.PlayerLeaveAttackRange -= ClearTarget;
+        _attackRangeDetector.PlayerEnteredAttackRange -= SetTarget;
+        _attackRangeDetector.PlayerLeftAttackRange -= ClearTarget;
+    }
+
+    private void Start()
+    {
+        _target = null;
     }
 
     private void SetTarget()

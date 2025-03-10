@@ -182,8 +182,8 @@ GameObject:
   - component: {fileID: 2226611496704032205}
   - component: {fileID: 8678740569370091572}
   - component: {fileID: 8486431887848612342}
-  - component: {fileID: 3884064727272270850}
   - component: {fileID: 3046805606487598368}
+  - component: {fileID: 2645942799390696527}
   - component: {fileID: 4415498826557747193}
   m_Layer: 8
   m_Name: Goblin
@@ -284,27 +284,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccddb798eafc2a4c918086d0d427604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyRenderer: {fileID: 3884064727272270850}
   _enemyAnimator: {fileID: 3046805606487598368}
   _rigidbody: {fileID: 8678740569370091572}
   _playerDetector: {fileID: 1230079550691229849}
   _attackRangeDetector: {fileID: 694726155493099842}
+  _modelFlipper: {fileID: 2645942799390696527}
   _speed: 3
   _waitingTime: 2
   _attackDelay: 2
---- !u!114 &3884064727272270850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4536786150008839206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02571c06a395633468bc648310ab860b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _viewModel: {fileID: 6186713821058768404}
 --- !u!114 &3046805606487598368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +308,19 @@ MonoBehaviour:
   _combatStats: {fileID: 4415498826557747193}
   _hitted: {fileID: 7400000, guid: 50c0e3ae49b8ccd48b3f6612d411d0ca, type: 2}
   _attack: {fileID: 7400000, guid: 31891af1fa81e6043812d701cf55681a, type: 2}
+--- !u!114 &2645942799390696527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536786150008839206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01feb230b1eaba74fb42bc729aaf5b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewModel: {fileID: 6186713821058768404}
 --- !u!114 &4415498826557747193
 MonoBehaviour:
   m_ObjectHideFlags: 0

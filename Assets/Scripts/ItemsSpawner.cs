@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemsSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _ItemPrefab;
+    [SerializeField] private GameObject _itemPrefab;
     [SerializeField] private List<Transform> _spawnpoints = new List<Transform>();
 
     private void Start()
@@ -15,7 +15,7 @@ public class ItemsSpawner : MonoBehaviour
     {
         foreach (var item in _spawnpoints)
         {
-            Instantiate(_ItemPrefab, item.position, Quaternion.identity);
+            Instantiate(_itemPrefab, item.position, Quaternion.identity);
         }
     }
 }

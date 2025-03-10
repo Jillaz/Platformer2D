@@ -1,23 +1,24 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class EnemyAttackRangeDetector : MonoBehaviour
 {
-    public CombatStats SelectedTarget {  get; private set; }
-    public event UnityAction PlayerEnterAttackRange;
-    public event UnityAction PlayerLeaveAttackRange;
+    public CombatStats SelectedTarget { get; private set; }
+
+    public event Action PlayerEnteredAttackRange;
+    public event Action PlayerLeftAttackRange;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CombatStats player))
+        if (collision.TryGetComponent(out CombatStats target))
         {
-            PlayerEnterAttackRange?.Invoke();
-            SelectedTarget = player;
+            SelectedTarget = target;
+            PlayerEnteredAttackRange?.Invoke();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        PlayerLeaveAttackRange?.Invoke();
+        PlayerLeftAttackRange?.Invoke();
     }
 }

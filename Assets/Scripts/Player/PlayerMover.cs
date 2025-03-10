@@ -5,6 +5,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private ModelFlipper _modelFlipper;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
 
@@ -17,6 +18,7 @@ public class PlayerMover : MonoBehaviour
     private void Move()
     {
         _rigidbody.velocity = new Vector2(_playerInput.Direction * _moveSpeed, _rigidbody.velocity.y);
+        _modelFlipper.FlipRotation(_playerInput.Direction);
     }
 
     private void JumpUp()

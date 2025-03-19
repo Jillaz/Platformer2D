@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PlayerAttacker : MonoBehaviour
+public class PlayerAnimatorEventAttack : MonoBehaviour
 {    
     [SerializeField] private Collider2D _hitZone;
 
-    public void Attack()
+    public void StartAttack()
     {
         _hitZone.enabled = true;
     }

@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 3684321906482754368}
   - component: {fileID: 1857306619483860352}
   - component: {fileID: 4031032326931416284}
-  - component: {fileID: -4238949781498225857}
   m_Layer: 0
   m_Name: FirstAidKit
   m_TagString: Untagged
@@ -199,15 +198,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HealthAmount>k__BackingField: 50
---- !u!114 &-4238949781498225857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5468684929691792004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df0f82d49a7f0645be3381cfcb2cf46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

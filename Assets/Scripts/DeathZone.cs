@@ -4,9 +4,9 @@ public class DeathZone : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.TryGetComponent(out CombatStats combatStats))
+        if (collision.collider.TryGetComponent(out CharacterStats characterStats))
         {
-            combatStats.ApplyDamage(combatStats.Health);
+            characterStats.ApplyLethalDamage();
         }
     }
 }

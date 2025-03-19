@@ -3,22 +3,18 @@ using System;
 
 public class EnemyPlayerDetector : MonoBehaviour
 {
-    public Transform PlayerTransform { get; private set; } = null;
-
-    public event Action PlayerDetected;
+    public event Action<Transform> PlayerDetected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CombatStats player))
-        {
-            PlayerTransform = player.transform;
-            PlayerDetected?.Invoke();
+        if (collision.TryGetComponent(out CharacterStats player))
+        {            
+            PlayerDetected?.Invoke(collision.transform);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
-        PlayerTransform = null;
-        PlayerDetected?.Invoke();
+    {        
+        PlayerDetected?.Invoke(null);
     }
 }

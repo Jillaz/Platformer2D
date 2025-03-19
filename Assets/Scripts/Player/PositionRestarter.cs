@@ -3,20 +3,21 @@ using UnityEngine;
 public class PositionRestarter : MonoBehaviour
 {
     [SerializeField] private Transform _startPosition;
-    [SerializeField] private CombatStats _combatStats;
+    [SerializeField] private CharacterStats _characterStats;
 
     private void OnEnable()
     {
-        _combatStats.CharacterDied += RestartPosition;
+        _characterStats.CharacterDied += RestartPosition;
     }
 
     private void OnDisable()
     {
-        _combatStats.CharacterDied -= RestartPosition;
+        _characterStats.CharacterDied -= RestartPosition;
     }    
 
     private void RestartPosition()
     {
         transform.position = _startPosition.position;
+        _characterStats.Ressurect();
     }
 }

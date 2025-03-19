@@ -3,11 +3,12 @@ using System;
 
 public class CoinCounter : MonoBehaviour
 {
+    public event Action<int> CoinsNumberChanged;
+
     [SerializeField] private ItemsCollector _collector;
 
     private int _coinCount = 0;
 
-    public event Action<int> CoinsNumberChanged;
 
     private void OnEnable()
     {

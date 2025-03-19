@@ -182,16 +182,16 @@ GameObject:
   - component: {fileID: 2226611496704032205}
   - component: {fileID: 8678740569370091572}
   - component: {fileID: 8486431887848612342}
-  - component: {fileID: 3046805606487598368}
   - component: {fileID: 2645942799390696527}
-  - component: {fileID: 4415498826557747193}
+  - component: {fileID: 3320559825081876736}
+  - component: {fileID: 5540257780273428116}
   m_Layer: 8
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6186713821058768404
 Transform:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -284,30 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ccddb798eafc2a4c918086d0d427604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyAnimator: {fileID: 3046805606487598368}
-  _rigidbody: {fileID: 8678740569370091572}
-  _playerDetector: {fileID: 1230079550691229849}
-  _attackRangeDetector: {fileID: 694726155493099842}
+  _enemyAnimator: {fileID: 9011477968640919955}
   _modelFlipper: {fileID: 2645942799390696527}
-  _speed: 3
+  _movementSpeed: {fileID: 3320559825081876736}
   _waitingTime: 2
-  _attackDelay: 2
---- !u!114 &3046805606487598368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4536786150008839206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13caceba62311f469187eaa3dad7251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 6886959351089401574}
-  _combatStats: {fileID: 4415498826557747193}
-  _hitted: {fileID: 7400000, guid: 50c0e3ae49b8ccd48b3f6612d411d0ca, type: 2}
-  _attack: {fileID: 7400000, guid: 31891af1fa81e6043812d701cf55681a, type: 2}
 --- !u!114 &2645942799390696527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewModel: {fileID: 6186713821058768404}
---- !u!114 &4415498826557747193
+--- !u!114 &3320559825081876736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,12 +310,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4536786150008839206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f4e9d1c62609f419d1e92c941b5022, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b5e841ccfb0dfe4eb8e7046cd9b67dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
   <Health>k__BackingField: 100
-  <DeadlyHealthLevel>k__BackingField: 0
+  <LethalValueHealth>k__BackingField: 0
   <AttackPower>k__BackingField: 20
+  <MovementSpeed>k__BackingField: 2
+--- !u!114 &5540257780273428116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4536786150008839206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ad259612432ce458b4cac87962675e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterStats: {fileID: 3320559825081876736}
 --- !u!1 &8104833950924064184
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +343,7 @@ GameObject:
   - component: {fileID: 6886575297285816048}
   - component: {fileID: 6886959351089401574}
   - component: {fileID: 3768837786618200703}
+  - component: {fileID: 9011477968640919955}
   m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
@@ -455,5 +451,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08adb2b359ce08049b0ab09c5b0820c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 4415498826557747193}
+  _characterStats: {fileID: 3320559825081876736}
+  _characterAbilites: {fileID: 5540257780273428116}
   _attackRangeDetector: {fileID: 694726155493099842}
+--- !u!114 &9011477968640919955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104833950924064184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13caceba62311f469187eaa3dad7251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterStats: {fileID: 3320559825081876736}
+  _hitted: {fileID: 7400000, guid: 50c0e3ae49b8ccd48b3f6612d411d0ca, type: 2}
+  _attack: {fileID: 7400000, guid: 31891af1fa81e6043812d701cf55681a, type: 2}
+  _animator: {fileID: 6886959351089401574}

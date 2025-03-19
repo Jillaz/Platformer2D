@@ -3,10 +3,10 @@ using System;
 
 public class ItemsCollector : MonoBehaviour
 {
-    [SerializeField] private CombatStats _combatStats;
-
     public event Action<int> CoinCollected;
     public event Action<int> FirstAidKitCollected;
+
+    [SerializeField] private CharacterStats _characterStats;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,7 +19,7 @@ public class ItemsCollector : MonoBehaviour
         if (collision.TryGetComponent(out FirstAidKit firstAidKit))
         {
             FirstAidKitCollected?.Invoke(firstAidKit.HealthAmount);
-            _combatStats.Healing(firstAidKit.HealthAmount);
+            _characterStats.ApplyHeal(firstAidKit.HealthAmount);
             Destroy(collision.gameObject);
         }
     }

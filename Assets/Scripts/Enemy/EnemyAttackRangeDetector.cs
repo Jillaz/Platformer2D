@@ -3,14 +3,14 @@ using System;
 
 public class EnemyAttackRangeDetector : MonoBehaviour
 {
-    public CombatStats SelectedTarget { get; private set; }
-
     public event Action PlayerEnteredAttackRange;
     public event Action PlayerLeftAttackRange;
 
+    public CharacterStats SelectedTarget { get; private set; }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CombatStats target))
+        if (collision.TryGetComponent(out CharacterStats target))
         {
             SelectedTarget = target;
             PlayerEnteredAttackRange?.Invoke();

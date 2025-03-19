@@ -1,39 +1,32 @@
-using System.Collections;
 using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
 
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
-    [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private EnemyPlayerDetector _playerDetector;
-    [SerializeField] private EnemyAttackRangeDetector _attackRangeDetector;
     [SerializeField] private ModelFlipper _modelFlipper;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _waitingTime = 1f;
-    [SerializeField] private float _attackDelay = 2f;
+    [SerializeField] private CharacterStats _movementSpeed;
 
+    private Rigidbody2D _rigidbody;
     private Vector2 _direction = Vector2.right;
     private Transform _destination;
     private bool _isCanMove = true;
-    private bool _isInAttackRange = false;
-    private bool _isPlayerInTartget = false;
 
-    private void OnEnable()
+    public void SetDestination(Transform destination)
     {
-        _playerDetector.PlayerDetected += FollowPlayer;
-        _attackRangeDetector.PlayerEnteredAttackRange += StartAttack;
-        _attackRangeDetector.PlayerLeftAttackRange += StopAttack;
+        _destination = destination;
     }
 
-    private void OnDisable()
+    public void IsCanMove(bool isCanMove)
     {
-        _playerDetector.PlayerDetected -= FollowPlayer;
-        _attackRangeDetector.PlayerEnteredAttackRange -= StartAttack;
-        _attackRangeDetector.PlayerLeftAttackRange -= StopAttack;
+        _isCanMove = isCanMove;
+        _enemyAnimator.SetMovingAnimation(isCanMove);
     }
 
     private void Start()
     {
+        _rigidbody = GetComponent<Rigidbody2D>();
         _enemyAnimator.SetMovingAnimation(_isCanMove);
     }
 
@@ -41,31 +34,10 @@ public class EnemyMover : MonoBehaviour
     {
         if (_isCanMove)
         {
-            _rigidbody.velocity = new Vector2(_direction.x * _speed, _rigidbody.velocity.y);
+            _rigidbody.velocity = new Vector2(_direction.x * _movementSpeed.MovementSpeed, _rigidbody.velocity.y);
             ChangeDirection();
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out PlatformEdge fallingZone) && _isPlayerInTartget == false)
-        {
-            _destination = fallingZone.NextPatrolWaypoint;
-            _isCanMove = false;
-            _enemyAnimator.SetMovingAnimation(_isCanMove);
-            StartCoroutine(StayAtPosition());
-        }
-    }
-
-    private IEnumerator StayAtPosition()
-    {
-        var delay = new WaitForSeconds(_waitingTime);
-
-        yield return delay;
-
-        _isCanMove = true;
-        _enemyAnimator.SetMovingAnimation(_isCanMove);
-    }
+    }    
 
     private void ChangeDirection()
     {
@@ -85,44 +57,5 @@ public class EnemyMover : MonoBehaviour
         }
 
         _modelFlipper.FlipRotation(_direction.x);
-    }
-
-    private void FollowPlayer()
-    {
-        _isCanMove = true;
-        _isPlayerInTartget = true;
-        _destination = _playerDetector.PlayerTransform;
-        _enemyAnimator.SetMovingAnimation(_isCanMove);
-
-        if (_destination == null)
-        {
-            _isPlayerInTartget = false;
-        }
-    }
-
-    private void StartAttack()
-    {
-        _isInAttackRange = true;
-        _isCanMove = false;
-        _enemyAnimator.SetMovingAnimation(_isCanMove);
-        StartCoroutine(AttackPlayer());
-    }
-
-    private void StopAttack()
-    {
-        _isInAttackRange = false;
-        _isCanMove = true;
-        _enemyAnimator.SetMovingAnimation(_isCanMove);
-    }
-
-    private IEnumerator AttackPlayer()
-    {
-        var delay = new WaitForSeconds(_attackDelay);
-
-        while (_isInAttackRange)
-        {
-            yield return delay;
-            _enemyAnimator.Attack();
-        }
-    }
+    }   
 }

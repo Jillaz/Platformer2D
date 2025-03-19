@@ -1,23 +1,31 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+
 public class PlayerAnimator : MonoBehaviour
 {
     public static int IsRunning = Animator.StringToHash(nameof(IsRunning));
 
-    [SerializeField] private Animator _animator;
     [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private CombatStats _combatStats;
+    [SerializeField] private CharacterStats _characterStats;
     [SerializeField] private AnimationClip _hitted;
     [SerializeField] private AnimationClip _attack;
 
+    private Animator _animator;
+
     private void OnEnable()
     {
-        _combatStats.HitRecived += HitRecived;
+        _characterStats.HitRecived += HitRecived;
     }
 
     private void OnDisable()
     {
-        _combatStats.HitRecived -= HitRecived;
+        _characterStats.HitRecived -= HitRecived;
+    }
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()

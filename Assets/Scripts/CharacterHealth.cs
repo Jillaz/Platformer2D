@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterHealth : MonoBehaviour
 {
     public event Action CharacterDied;
     public event Action HitRecived;
@@ -10,9 +10,6 @@ public class CharacterStats : MonoBehaviour
     [field: SerializeField] public int MaxHealth { get; private set; } = 100;
     [field: SerializeField] public int Health { get; private set; } = 50;
     [field: SerializeField] public int LethalValueHealth { get; private set; } = 0;
-    [field: SerializeField] public int AttackPower { get; private set; } = 20;
-    [field: SerializeField] public int MovementSpeed { get; private set; } = 2;
-
 
     public void ApplyDamage(int damage)
     {

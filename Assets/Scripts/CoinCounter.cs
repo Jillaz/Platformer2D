@@ -9,7 +9,6 @@ public class CoinCounter : MonoBehaviour
 
     private int _coinCount = 0;
 
-
     private void OnEnable()
     {
         _collector.CoinCollected += AddCoin;        

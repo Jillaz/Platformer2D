@@ -7,7 +7,7 @@ public class EnemyPlayerDetector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CharacterStats player))
+        if (collision.TryGetComponent(out CharacterHealth player))
         {            
             PlayerDetected?.Invoke(collision.transform);
         }

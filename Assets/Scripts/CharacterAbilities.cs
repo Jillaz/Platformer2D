@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CharacterAbilities : MonoBehaviour
 {
-    [SerializeField] private CharacterStats _characterStats;
+    [SerializeField] private CharacterAttackPower _characterAttackPower;
 
     public int Attack()
     {
-        return _characterStats.AttackPower;
+        return _characterAttackPower.AttackPower;
     }
 }

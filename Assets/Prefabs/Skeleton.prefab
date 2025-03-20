@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 6509377417941961524}
   - component: {fileID: 6436788801947174397}
   - component: {fileID: 3193716663032114991}
+  - component: {fileID: 3544312015330834600}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
@@ -346,7 +347,9 @@ MonoBehaviour:
   _enemyMover: {fileID: 2428277602182152484}
   _enemyPlayerDetector: {fileID: 1189438014694629470}
   _enemyAttackRangeDetector: {fileID: 6327798969053382912}
+  _animator: {fileID: 3073563877848903111}
   _waitingTime: 1
+  _attackDelay: 2
 --- !u!114 &2428277602182152484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyAnimator: {fileID: 3073563877848903111}
   _modelFlipper: {fileID: 6509377417941961524}
-  _movementSpeed: {fileID: 6436788801947174397}
+  _movementSpeed: 1
 --- !u!114 &6509377417941961524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,8 +393,6 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 100
   <Health>k__BackingField: 100
   <LethalValueHealth>k__BackingField: 0
-  <AttackPower>k__BackingField: 20
-  <MovementSpeed>k__BackingField: 1
 --- !u!114 &3193716663032114991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +405,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ad259612432ce458b4cac87962675e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStats: {fileID: 6436788801947174397}
+  _characterAttackPower: {fileID: 3544312015330834600}
+--- !u!114 &3544312015330834600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840741897376835814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2574d05b9acd3e42bae7ca4d5c31752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AttackPower>k__BackingField: 20
 --- !u!1 &8563269734627520441
 GameObject:
   m_ObjectHideFlags: 0

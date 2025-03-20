@@ -6,12 +6,31 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private ModelFlipper _modelFlipper;
-    [SerializeField] private CharacterStats _movementSpeed;
+    [SerializeField] private float _movementSpeed;
 
     private Rigidbody2D _rigidbody;
     private Vector2 _direction = Vector2.right;
     private Transform _destination;
     private bool _isCanMove = true;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        _enemyAnimator.SetMovingAnimation(_isCanMove);
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isCanMove)
+        {
+            _rigidbody.velocity = new Vector2(_direction.x * _movementSpeed, _rigidbody.velocity.y);
+            ChangeDirection();
+        }
+    }
 
     public void SetDestination(Transform destination)
     {
@@ -23,21 +42,6 @@ public class EnemyMover : MonoBehaviour
         _isCanMove = isCanMove;
         _enemyAnimator.SetMovingAnimation(isCanMove);
     }
-
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _enemyAnimator.SetMovingAnimation(_isCanMove);
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isCanMove)
-        {
-            _rigidbody.velocity = new Vector2(_direction.x * _movementSpeed.MovementSpeed, _rigidbody.velocity.y);
-            ChangeDirection();
-        }
-    }    
 
     private void ChangeDirection()
     {
@@ -57,5 +61,5 @@ public class EnemyMover : MonoBehaviour
         }
 
         _modelFlipper.FlipRotation(_direction.x);
-    }   
+    }
 }

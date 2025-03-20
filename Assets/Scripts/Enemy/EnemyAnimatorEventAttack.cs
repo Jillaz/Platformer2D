@@ -2,19 +2,11 @@ using UnityEngine;
 
 public class EnemyAnimatorEventAttack : MonoBehaviour
 {
-    [SerializeField] private CharacterStats _characterStats;
+    [SerializeField] private CharacterHealth _characterHealth;
     [SerializeField] private CharacterAbilities _characterAbilites;
     [SerializeField] private EnemyAttackRangeDetector _attackRangeDetector;
 
-    private CharacterStats _target;
-
-    public void Attack()
-    {
-        if (_target != null)
-        {
-            _target.ApplyDamage(_characterAbilites.Attack());
-        }
-    }
+    private CharacterHealth _target;    
 
     private void OnEnable()
     {
@@ -31,6 +23,14 @@ public class EnemyAnimatorEventAttack : MonoBehaviour
     private void Start()
     {
         _target = null;
+    }
+
+    public void AttackTarget()
+    {
+        if (_target != null)
+        {
+            _target.ApplyDamage(_characterAbilites.Attack());
+        }
     }
 
     private void SetTarget()

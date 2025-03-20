@@ -6,7 +6,7 @@ public class PlayerDamageDealer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CharacterStats enemy))
+        if (collision.TryGetComponent(out CharacterHealth enemy))
         {
             enemy.ApplyDamage(_characterAbilities.Attack());
         }

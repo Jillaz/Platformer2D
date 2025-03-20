@@ -6,44 +6,39 @@ public class PlayerAnimator : MonoBehaviour
 {
     public static int IsRunning = Animator.StringToHash(nameof(IsRunning));
 
-    [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private CharacterStats _characterStats;
+    [SerializeField] private CharacterHealth _characterHealth;
     [SerializeField] private AnimationClip _hitted;
     [SerializeField] private AnimationClip _attack;
 
     private Animator _animator;
 
-    private void OnEnable()
-    {
-        _characterStats.HitRecived += HitRecived;
-    }
-
-    private void OnDisable()
-    {
-        _characterStats.HitRecived -= HitRecived;
-    }
-
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        _animator.SetBool(IsRunning, _playerInput.Direction != 0);
-        Attack();
+        _characterHealth.HitRecived += HitRecived;
+    }
+
+    private void OnDisable()
+    {
+        _characterHealth.HitRecived -= HitRecived;
+    }
+
+    public void Attack()
+    {
+        _animator.Play(_attack.name);
+    }
+
+    public void Move(float direction)
+    {
+        _animator.SetBool(IsRunning, direction != 0);
     }
 
     private void HitRecived()
     {
         _animator.Play(_hitted.name);
-    }
-
-    private void Attack()
-    {
-        if (_playerInput.IsAttack)
-        {
-            _animator.Play(_attack.name);
-        }
     }
 }

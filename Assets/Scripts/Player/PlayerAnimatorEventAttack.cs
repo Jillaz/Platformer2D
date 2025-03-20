@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAnimatorEventAttack : MonoBehaviour
+public class CharacterAnimatorEventAttack : MonoBehaviour
 {    
     [SerializeField] private Collider2D _hitZone;
 

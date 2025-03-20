@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08adb2b359ce08049b0ab09c5b0820c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStats: {fileID: 6436788801947174397}
+  _characterHealth: {fileID: 6436788801947174397}
   _characterAbilites: {fileID: 3193716663032114991}
   _attackRangeDetector: {fileID: 6327798969053382912}
 --- !u!114 &3073563877848903111
@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13caceba62311f469187eaa3dad7251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStats: {fileID: 6436788801947174397}
   _hitted: {fileID: 7400000, guid: 677a73bd37a321342bb6b419c1684b52, type: 2}
   _attack: {fileID: 7400000, guid: d2e784aa6e498c84f8686a6261db8052, type: 2}
 --- !u!1 &5181857531042645217
@@ -393,6 +392,7 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 100
   <Health>k__BackingField: 100
   <LethalValueHealth>k__BackingField: 0
+  _animator: {fileID: 0}
 --- !u!114 &3193716663032114991
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyMover _enemyMover;
     [SerializeField] private EnemyPlayerDetector _enemyPlayerDetector;
     [SerializeField] private EnemyAttackRangeDetector _enemyAttackRangeDetector;
-    [SerializeField] private EnemyAnimator _animator;
+    [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private float _waitingTime = 1;
     [SerializeField] private float _attackDelay = 2f;
 
@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
         while (_isPlayerInAttackRange)
         {
             yield return delay;
-            _animator.Attack();
+            _animator.PlayAttackAnimation();
         }
     }
 }

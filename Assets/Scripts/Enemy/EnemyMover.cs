@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] private EnemyAnimator _enemyAnimator;
+    [SerializeField] private CharacterAnimator _enemyAnimator;
     [SerializeField] private ModelFlipper _modelFlipper;
     [SerializeField] private float _movementSpeed;
 
@@ -20,7 +20,7 @@ public class EnemyMover : MonoBehaviour
 
     private void Start()
     {
-        _enemyAnimator.SetMovingAnimation(_isCanMove);
+        _enemyAnimator.PlayMovingAnimation(_isCanMove);
     }
 
     private void FixedUpdate()
@@ -40,7 +40,7 @@ public class EnemyMover : MonoBehaviour
     public void IsCanMove(bool isCanMove)
     {
         _isCanMove = isCanMove;
-        _enemyAnimator.SetMovingAnimation(isCanMove);
+        _enemyAnimator.PlayMovingAnimation(isCanMove);
     }
 
     private void ChangeDirection()

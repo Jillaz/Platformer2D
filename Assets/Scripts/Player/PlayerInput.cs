@@ -10,12 +10,12 @@ public class PlayerInput : MonoBehaviour
     public float Direction { get; private set; }
     public bool IsJump { get; private set; }
 
-    [SerializeField] private PlayerAnimator _animator;    
+    [SerializeField] private CharacterAnimator _animator;    
 
     private void Update()
     {
         Direction = Input.GetAxis(Horizontal);
-        _animator.Move(Direction);
+        _animator.PlayMovingAnimation(Direction);
 
         if (Input.GetButton(Jump))
         {
@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButton(Fire1))
         {
-            _animator.Attack();
+            _animator.PlayAttackAnimation();
         }
     }
 }

@@ -1396,6 +1396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitted: {fileID: 7400000, guid: 94bc6a2c243f7fd48b6b63f03e91e102, type: 2}
   _attack: {fileID: 7400000, guid: 257f4a3ac4f7bc941a8db015214794a1, type: 2}
+  _characterHealth: {fileID: 924740034}
 --- !u!4 &498427899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1347199919235024816, guid: 37994c2a2c8d48a409258242a4773d70, type: 3}
@@ -13822,10 +13823,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5e841ccfb0dfe4eb8e7046cd9b67dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
-  <Health>k__BackingField: 40
-  <LethalValueHealth>k__BackingField: 0
-  _animator: {fileID: 479379358}
+  <MaxValue>k__BackingField: 100
+  <Value>k__BackingField: 50
+  <LethalValue>k__BackingField: 0
 --- !u!114 &924740035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13908,6 +13908,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37994c2a2c8d48a409258242a4773d70, type: 3}
+--- !u!114 &932718527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6436788801947174397, guid: e80ce67c5a17e59449f6b9f9fbe3a9fe, type: 3}
+  m_PrefabInstance: {fileID: 6921474979297962677}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e841ccfb0dfe4eb8e7046cd9b67dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1016744275
 GameObject:
   m_ObjectHideFlags: 0
@@ -20803,6 +20814,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3073563877848903111, guid: e80ce67c5a17e59449f6b9f9fbe3a9fe, type: 3}
+      propertyPath: _characterHealth
+      value: 
+      objectReference: {fileID: 932718527}
     - target: {fileID: 6436788801947174397, guid: e80ce67c5a17e59449f6b9f9fbe3a9fe, type: 3}
       propertyPath: _animator
       value: 

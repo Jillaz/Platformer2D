@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
 {
-    public static int IsMoving = Animator.StringToHash(nameof(IsMoving));
+    private static int IsMoving = Animator.StringToHash(nameof(IsMoving));
 
     [SerializeField] private AnimationClip _hitted;
     [SerializeField] private AnimationClip _attack;
+    [SerializeField] private Health _characterHealth;
 
     private Animator _animator;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }    
+
+    private void OnEnable()
+    {
+        _characterHealth.Hitted += PlayHitRecivedAnimation;
+    }
+
+    private void OnDisable()
+    {
+        _characterHealth.Hitted -= PlayHitRecivedAnimation;
     }
 
     public void PlayMovingAnimation(bool isCanMove)
@@ -31,7 +42,7 @@ public class CharacterAnimator : MonoBehaviour
         _animator.Play(_attack.name);
     }
 
-    public void PlayHitRecivedAnimation()
+    private void PlayHitRecivedAnimation()
     {
         _animator.Play(_hitted.name);
     }

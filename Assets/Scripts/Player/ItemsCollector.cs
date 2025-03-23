@@ -3,24 +3,26 @@ using System;
 
 public class ItemsCollector : MonoBehaviour
 {
+    [SerializeField] private Health _characterHealth;
+
     public event Action<int> CoinCollected;
     public event Action<int> FirstAidKitCollected;
 
-    [SerializeField] private CharacterHealth _characterHealth;
-
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Coin coin))
+    {        
+        if (collision.TryGetComponent(out Items item))
         {
-            CoinCollected?.Invoke(coin.CoinCost);
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.TryGetComponent(out FirstAidKit firstAidKit))
-        {
-            FirstAidKitCollected?.Invoke(firstAidKit.HealthAmount);
-            _characterHealth.ApplyHeal(firstAidKit.HealthAmount);
-            Destroy(collision.gameObject);
+            if (item is Coin)
+            {
+                CoinCollected?.Invoke(item.Value);
+                Destroy(collision.gameObject);
+            }
+            else if (item is FirstAidKit)
+            {
+                FirstAidKitCollected?.Invoke(item.Value);
+                _characterHealth.Healing(item.Value);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

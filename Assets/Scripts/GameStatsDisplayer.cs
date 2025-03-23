@@ -6,7 +6,7 @@ public class GameStatsDisplayer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textCoinsCollected;
     [SerializeField] private TextMeshProUGUI _textCurrentHealth;
     [SerializeField] private CoinCounter _coinCounter;
-    [SerializeField] private CharacterHealth _characterHealth;
+    [SerializeField] private Health _characterHealth;
 
     private string _defaultStringCoins;
     private string _defaultStringHealth;
@@ -14,20 +14,20 @@ public class GameStatsDisplayer : MonoBehaviour
     private void OnEnable()
     {
         _coinCounter.CoinsNumberChanged += DisplayCoins;
-        _characterHealth.HealthUpdated += DisplayHealth;
+        _characterHealth.ValueUpdated += DisplayHealth;
     }
 
     private void OnDisable()
     {
         _coinCounter.CoinsNumberChanged -= DisplayCoins;
-        _characterHealth.HealthUpdated -= DisplayHealth;
+        _characterHealth.ValueUpdated -= DisplayHealth;
     }
 
     private void Start()
     {
         _defaultStringCoins = _textCoinsCollected.text;
         _defaultStringHealth = _textCurrentHealth.text;        
-        DisplayHealth(_characterHealth.Health);
+        DisplayHealth(_characterHealth.Value);
     }
 
     private void DisplayCoins(int coins)
@@ -37,6 +37,6 @@ public class GameStatsDisplayer : MonoBehaviour
 
     private void DisplayHealth(int health)
     {
-        _textCurrentHealth.text = $"{_defaultStringHealth}: {health}/{_characterHealth.MaxHealth}";
+        _textCurrentHealth.text = $"{_defaultStringHealth}: {health}/{_characterHealth.MaxValue}";
     }
 }

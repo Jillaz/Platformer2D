@@ -6,11 +6,11 @@ public class EnemyAttackRangeDetector : MonoBehaviour
     public event Action PlayerEnteredAttackRange;
     public event Action PlayerLeftAttackRange;
 
-    public CharacterHealth SelectedTarget { get; private set; }
+    public Health SelectedTarget { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out CharacterHealth target))
+        if (collision.TryGetComponent(out Health target))
         {
             SelectedTarget = target;
             PlayerEnteredAttackRange?.Invoke();

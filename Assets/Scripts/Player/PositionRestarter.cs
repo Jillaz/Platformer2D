@@ -3,7 +3,7 @@ using UnityEngine;
 public class PositionRestarter : MonoBehaviour
 {
     [SerializeField] private Transform _startPosition;
-    [SerializeField] private CharacterHealth _characterHealth;
+    [SerializeField] private Health _characterHealth;
 
     private void OnEnable()
     {

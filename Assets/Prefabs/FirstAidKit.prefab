@@ -197,4 +197,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0adc1faeffca9064ea59d92ec20380c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HealthAmount>k__BackingField: 50
+  <Value>k__BackingField: 50

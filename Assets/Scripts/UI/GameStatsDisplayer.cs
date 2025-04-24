@@ -35,7 +35,7 @@ public class GameStatsDisplayer : MonoBehaviour
         _textCoinsCollected.text = _defaultStringCoins + coins;
     }
 
-    private void DisplayHealth(int health)
+    private void DisplayHealth(float health)
     {
         _textCurrentHealth.text = $"{_defaultStringHealth}: {health}/{_characterHealth.MaxValue}";
     }

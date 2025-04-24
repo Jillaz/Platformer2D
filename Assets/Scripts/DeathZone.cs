@@ -6,7 +6,7 @@ public class DeathZone : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Health characterStats))
         {
-            characterStats.TakeLethalDamage();
+            characterStats.Kill();
         }
     }
 }

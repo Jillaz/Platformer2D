@@ -7,12 +7,12 @@ public class PositionRestarter : MonoBehaviour
 
     private void OnEnable()
     {
-        _characterHealth.CharacterDied += RestartPosition;
+        _characterHealth.Died += RestartPosition;
     }
 
     private void OnDisable()
     {
-        _characterHealth.CharacterDied -= RestartPosition;
+        _characterHealth.Died -= RestartPosition;
     }    
 
     private void RestartPosition()

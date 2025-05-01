@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
-{    
+{
     public event Action Died;
     public event Action<float> ValueUpdated;
     public event Action Hitted;
@@ -13,9 +13,16 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Value -= CheckNegativeValue(damage);
-        Value = LimitValue(Value);
+        damage = CheckNegativeValue(damage);
+        Value -= damage;
+        Value = Math.Clamp(Value, MinValue, MaxValue);
         Hitted?.Invoke();
+
+        if (damage == 0)
+        {
+            return;
+        }
+
         ValueUpdated?.Invoke(Value);
 
         if (Value == MinValue)
@@ -27,8 +34,15 @@ public class Health : MonoBehaviour
 
     public void Healing(float healingAmount)
     {
-        Value += CheckNegativeValue(healingAmount);
-        Value = LimitValue(Value);
+        healingAmount = CheckNegativeValue(healingAmount);
+        Value += healingAmount;
+        Value = Math.Clamp(Value, MinValue, MaxValue);
+
+        if (healingAmount == 0)
+        {
+            return;
+        }
+
         ValueUpdated?.Invoke(Value);
     }
 
@@ -52,20 +66,5 @@ public class Health : MonoBehaviour
         {
             return value;
         }
-    }
-
-    private float LimitValue(float value)
-    {
-        if (value < MinValue)
-        {
-            return MinValue;
-        }
-
-        if (value > MaxValue)
-        {
-            return MaxValue;
-        }
-
-        return value;
     }
 }

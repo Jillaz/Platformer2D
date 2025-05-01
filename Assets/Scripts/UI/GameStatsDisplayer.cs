@@ -37,6 +37,6 @@ public class GameStatsDisplayer : MonoBehaviour
 
     private void DisplayHealth(float health)
     {
-        _textCurrentHealth.text = $"{_defaultStringHealth}: {health}/{_characterHealth.MaxValue}";
+        _textCurrentHealth.text = $"{_defaultStringHealth}: {health.ToString("F0")}/{_characterHealth.MaxValue}";
     }
 }
